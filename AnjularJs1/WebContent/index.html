@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script type="text/javascript">
+var app=angular.module("sample",[]).run(["$rootScope",function($rootScope){
+                               $rootScope.course= "java";          
+}]);
+app.controller("cntrl1",["$scope","$rootScope",function($scope,$rootScope){
+	$scope.Name= "charan";
+	$scope.Age= "23";
+$scope.sss=	$rootScope.course;
+	
+}]);
+app.controller("cntrl2",["$scope",function($scope){
+	$scope.sal= 20000;
+	$scope.getSal=function()
+	{
+		$scope.sum=$scope.sal*2;
+	}
+
+	
+}])
+
+</script>
+</head>
+<body ng-app="sample">
+<div ng-controller="cntrl1">
+ Hello <span ng-bind="Name"></span><input type="text" ng-model="Name"><br>
+  
+ your age is <span ng-bind="Age"></span><input type="text" ng-model="Age">!
+ <div ng-controller="cntrl2">
+ Hii {{::Name}} your salary is:{{sal}} {{course}}{{sss}}
+ total sal:{{sum}}<br>
+ <button ng-click="getSal()">Calculate</button>
+ </div>
+
+</div>
+
+</body>
+</html>
